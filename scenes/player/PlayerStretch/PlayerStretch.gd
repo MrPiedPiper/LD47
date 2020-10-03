@@ -3,7 +3,7 @@ extends "res://scenes/player/Player.gd"
 onready var stretch = $Stretchie/Stretch
 onready var end = $Stretchie/End
 onready var stretch_timer = $StretchTimer
-onready var stretch_target = $Stretchie/End/StretchTarget
+onready var stretch_target = $Stretchie/End/Sprite/StretchTarget
 
 onready var stretch_default_pos = end.global_position
 
@@ -14,7 +14,7 @@ func _ready():
 func clicked(pos):
 	stretch_to(pos)
 	stretch_timer.start()
-	$AnimationPlayer.play("example")
+#	$AnimationPlayer.play("example")
 
 func stretch_to(pos):
 	var local_pos = pos - position
