@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/player/PlayerStretch/PlayerStretch.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Chicken/chicken_spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://scenes/utility/ParticleBurst/ParticleBurst.tscn" type="PackedScene" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -27,7 +28,7 @@ radius = 41.1551
 
 [sub_resource type="Animation" id=6]
 resource_name = "example"
-length = 0.2
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Stretchie/End/Sprite2:texture:region")
 tracks/0/interp = 1
@@ -35,22 +36,34 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Rect2( 224, 8, 24, 40 ), Rect2( 160, 8, 24, 40 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Stretchie/End/Area2DAttack:monitorable")
+tracks/1/path = NodePath("../CPUParticles2D2:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Stretchie/End/Area2DAttack/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [node name="PlayerChicken" instance=ExtResource( 1 )]
@@ -84,14 +97,20 @@ texture = SubResource( 7 )
 "attack",
 ]]
 position = Vector2( -0.0268555, 0 )
-monitoring = false
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stretchie/End/Area2DAttack" index="0"]
 shape = SubResource( 8 )
+disabled = true
 
 [node name="StretchTarget" parent="Stretchie/End" index="3"]
 position = Vector2( -132.021, 89.9759 )
 
+[node name="ParticleBurst" parent="Stretchie/End" index="4" instance=ExtResource( 3 )]
+color = Color( 0.0745098, 0.368627, 0.0470588, 1 )
+
+[node name="StretchTimer" parent="." index="1"]
+wait_time = 0.31
+
 [node name="AnimationPlayer" parent="." index="2"]
 anims/example = SubResource( 6 )
+[connection signal="area_entered" from="Stretchie/End/Area2DAttack" to="." method="_on_Area2DAttack_area_entered"]

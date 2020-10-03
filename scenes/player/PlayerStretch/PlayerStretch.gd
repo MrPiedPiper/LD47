@@ -14,6 +14,7 @@ func _ready():
 func clicked(pos):
 	stretch_to(pos)
 	stretch_timer.start()
+#	$Stretchie/End/CPUParticles2D.restart()
 	$AnimationPlayer.play("example")
 
 func stretch_to(pos):
@@ -29,6 +30,13 @@ func stretch_to(pos):
 
 func _on_StretchTimer_timeout():
 	stretch_to(stretch_default_pos)
+
+func _on_Area2DAttack_area_entered(area):
+	print("Hit!")
+	if area.owner.is_in_group("enemy"):
+		$Stretchie/End/ParticleBurst.burst(area.global_position)
+		
+
 
 
 
