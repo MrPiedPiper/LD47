@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://scenes/play/PlayUi/PlayUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player/PlayerStretch/PlayerChicken/PlayerChicken.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/play/play.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Enemy/EnemyFly/EnemyFly.tscn" type="PackedScene" id=4]
@@ -24,6 +25,7 @@ path = NodePath("../../Path2D")
 [node name="EnemyFly2" parent="EnemiesBack" instance=ExtResource( 4 )]
 position = Vector2( -9.51364, 265.193 )
 path = NodePath("../../Path2D")
+health = 3
 
 [node name="PlayerChicken" parent="." instance=ExtResource( 2 )]
 position = Vector2( 484.989, 593.83 )
@@ -41,14 +43,22 @@ path = NodePath("../../Path2D")
 [node name="EnemyFly5" parent="EnemiesFront" instance=ExtResource( 4 )]
 position = Vector2( 837.202, 148.651 )
 path = NodePath("../../Path2D")
+health = 2
 
 [node name="EnemyFly6" parent="EnemiesFront" instance=ExtResource( 4 )]
 position = Vector2( -2.37842, 107.029 )
 path = NodePath("../../Path2D")
+
+[node name="UI" type="Node" parent="."]
+
+[node name="PlayUI" parent="UI" instance=ExtResource( 1 )]
+size_flags_horizontal = 3
+size_flags_vertical = 3
 [connection signal="move_to_back" from="EnemiesBack/EnemyFly" to="." method="_on_Enemy_move_to_back"]
 [connection signal="move_to_front" from="EnemiesBack/EnemyFly" to="." method="_on_Enemy_move_to_front"]
 [connection signal="move_to_back" from="EnemiesBack/EnemyFly2" to="." method="_on_Enemy_move_to_back"]
 [connection signal="move_to_front" from="EnemiesBack/EnemyFly2" to="." method="_on_Enemy_move_to_front"]
+[connection signal="scored" from="PlayerChicken" to="." method="_on_PlayerChicken_scored"]
 [connection signal="move_to_back" from="EnemiesFront/EnemyFly3" to="." method="_on_Enemy_move_to_back"]
 [connection signal="move_to_front" from="EnemiesFront/EnemyFly3" to="." method="_on_Enemy_move_to_front"]
 [connection signal="move_to_back" from="EnemiesFront/EnemyFly4" to="." method="_on_Enemy_move_to_back"]

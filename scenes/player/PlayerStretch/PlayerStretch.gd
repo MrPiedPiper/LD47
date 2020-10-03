@@ -32,9 +32,9 @@ func _on_StretchTimer_timeout():
 	stretch_to(stretch_default_pos)
 
 func _on_Area2DAttack_area_entered(area):
-	print("Hit!")
 	if area.owner.is_in_group("enemy"):
 		$Stretchie/End/ParticleBurst.burst(area.global_position)
+		hit(area.owner,attack)
 		
 
 

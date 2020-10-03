@@ -4,6 +4,8 @@ signal move_to_front
 signal move_to_back
 
 export(NodePath) var path
+export var score = 1
+export var health = 1
 
 var speed = 8
 var max_speed = 150
@@ -12,30 +14,35 @@ var target = Vector2(0,0)
 
 var touching_enemies = []
 
-onready var curve = get_node(path).curve
+var curve
 var points = []
 var midway
 var is_front = false
 
 func _ready():
-	var highest
-	var lowest
-	for i in range(curve.get_point_count()):
-		var curr_point = curve.get_point_position(i)
-		points.append(curr_point)
-		if highest == null or highest < curr_point.y:
-			highest = curr_point.y
-		if lowest == null or highest > curr_point.y:
-			lowest = curr_point.y
-	midway = (highest + lowest)/2
-	target = points[0]
+	randomize()
+	var seek = rand_range(0,1.6)
+	print(seek)
+	$AnimationPlayer.play("Fly")
+	$AnimationPlayer.seek(seek,true)
+	if path != null and get_node(path) != null and get_node(path).curve != null:
+		curve = get_node(path).curve
+		var highest
+		var lowest
+		for i in range(curve.get_point_count()):
+			var curr_point = curve.get_point_position(i)
+			points.append(curr_point)
+			if highest == null or highest < curr_point.y:
+				highest = curr_point.y
+			if lowest == null or highest > curr_point.y:
+				lowest = curr_point.y
+		midway = (highest + lowest)/2
+		target = points[0]
 
 func _physics_process(delta):
-	velocity += (target - position).normalized() * speed
-	
-#	for i in touching_enemies:
-#		velocity += -(i.position - position).normalized() * 4
-	
+	if target == null or points.size() == 0:
+		return
+	velocity += (target - position).normalized() * speed	
 	velocity = velocity.clamped(max_speed)
 	rotation = velocity.angle()
 	position += velocity * delta 
@@ -59,9 +66,9 @@ func _on_Area2D_area_exited(area):
 	if area.owner.is_in_group("enemy"):
 		touching_enemies.erase(area)
 
-func _on_Area2DHitbox_area_entered(area):
-	if area.is_in_group("attack") and area.owner.is_in_group("player"):
-		touching_enemies.erase(area)
+func damage(amount:int):
+	health -= amount
+	if health <= 0:
 		queue_free()
 
 
