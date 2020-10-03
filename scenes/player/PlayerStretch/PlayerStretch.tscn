@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://scenes/player/PlayerStretch/PlayerStretch.gd" type="Script" id=3]
+
+[node name="PlayerStretch" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Stretchie" type="Node2D" parent="." index="0"]
+
+[node name="Stretch" type="Sprite" parent="Stretchie" index="0"]
+texture = ExtResource( 2 )
+offset = Vector2( 0, -32 )
+
+[node name="End" type="Sprite" parent="Stretchie" index="1"]
+texture = ExtResource( 2 )
+
+[node name="StretchTimer" type="Timer" parent="." index="1"]
+wait_time = 0.3
+[connection signal="timeout" from="StretchTimer" to="." method="_on_StretchTimer_timeout"]

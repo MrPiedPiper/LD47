@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="LD47"
 config/icon="res://icon.png"
 
+[autoload]
+
+Utility="*res://scenes/utility/utility.tscn"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
