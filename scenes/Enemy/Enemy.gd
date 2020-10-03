@@ -41,13 +41,10 @@ func _physics_process(delta):
 	if position.distance_to(target) < 100:
 		points.insert(0,points.pop_back())
 		target = points[0]
-		print(str("target: ",target.y," mid: ",midway))
 		if target.y > midway and !is_front:
-			print("go front")
 			is_front = true
 			emit_signal("move_to_front",self)
 		elif target.y < midway and is_front:
-			print("go back")
 			emit_signal("move_to_back",self)
 			is_front = false
 

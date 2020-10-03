@@ -27,6 +27,7 @@ path = NodePath("../../Path2D")
 
 [node name="PlayerChicken" parent="." instance=ExtResource( 2 )]
 position = Vector2( 484.989, 593.83 )
+stretch_base_pos = Vector2( 465, 468 )
 stretch_default_pos = Vector2( 550, 300 )
 
 [node name="EnemiesFront" type="Node2D" parent="."]

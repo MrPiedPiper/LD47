@@ -9,7 +9,7 @@ onready var stretch_timer = $StretchTimer
 
 func _ready():
 	type = TYPE.STRETCH
-	stretch.position = stretch_base_pos
+	stretch.global_position = stretch_base_pos
 	stretch_to(stretch_default_pos)
 
 func clicked(pos):
@@ -18,8 +18,8 @@ func clicked(pos):
 
 func stretch_to(pos):
 	end.global_position = pos
-	var distance = stretch_base_pos.distance_to(end.position)
-	stretch.rotation = stretch.position.angle_to_point(end.position)-PI/2
+	var distance = stretch_base_pos.distance_to(end.global_position)
+	stretch.rotation = stretch.global_position.angle_to_point(end.global_position)-PI/2
 	stretch.scale.y = distance/stretch.get_rect().size.y
 
 func _on_StretchTimer_timeout():
