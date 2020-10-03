@@ -18,6 +18,8 @@ offset = Vector2( 0, -32 )
 [node name="Sprite" type="Sprite" parent="Stretchie/End" index="0"]
 texture = ExtResource( 2 )
 
+[node name="StretchTarget" type="Node2D" parent="Stretchie/End" index="1"]
+
 [node name="StretchTimer" type="Timer" parent="." index="1"]
 wait_time = 0.3
 [connection signal="timeout" from="StretchTimer" to="." method="_on_StretchTimer_timeout"]

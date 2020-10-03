@@ -53,8 +53,16 @@ func _on_Area2D_area_entered(area):
 		touching_enemies.append(area)
 
 func _on_Area2D_area_exited(area):
+	if area == null or area.owner == null:
+		return
 	if area.owner.is_in_group("enemy"):
 		touching_enemies.erase(area)
+
+func _on_Area2DHitbox_area_entered(area):
+	if area.is_in_group("attack") and area.owner.is_in_group("player"):
+		touching_enemies.erase(area)
+		queue_free()
+
 
 
 
