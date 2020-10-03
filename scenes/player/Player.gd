@@ -16,6 +16,11 @@ func _input(event):
 func clicked(pos):
 	pass
 
+func _on_AnimationPlayer_animation_finished(anim_name):
+	print("stopping")
+	$AnimationPlayer.stop()
+
+
 
 
 
