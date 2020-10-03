@@ -37,6 +37,7 @@ func _physics_process(delta):
 #		velocity += -(i.position - position).normalized() * 4
 	
 	velocity = velocity.clamped(max_speed)
+	rotation = velocity.angle()
 	position += velocity * delta 
 	if position.distance_to(target) < 100:
 		points.insert(0,points.pop_back())

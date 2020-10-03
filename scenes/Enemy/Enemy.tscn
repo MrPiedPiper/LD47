@@ -19,8 +19,11 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
+disabled = true
 
-[node name="Area2DHitbox" type="Area2D" parent="."]
+[node name="Area2DHitbox" type="Area2D" parent="." groups=[
+"hurtbox",
+]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DHitbox"]
 shape = SubResource( 2 )
