@@ -13,7 +13,9 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -32 )
 
-[node name="End" type="Sprite" parent="Stretchie" index="1"]
+[node name="End" type="Node2D" parent="Stretchie" index="1"]
+
+[node name="Sprite" type="Sprite" parent="Stretchie/End" index="0"]
 texture = ExtResource( 2 )
 
 [node name="StretchTimer" type="Timer" parent="." index="1"]
