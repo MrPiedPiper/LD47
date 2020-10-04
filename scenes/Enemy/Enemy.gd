@@ -8,6 +8,13 @@ export var is_looping = false
 export var score = 1
 export var health = 1
 
+enum DIFFICULTY {
+	EASY=1,
+	MEDIUM=2,
+	HARD=3,
+}
+export(DIFFICULTY) var difficulty = DIFFICULTY.EASY
+
 var max_speed = 480
 var speed = max_speed / 8
 var velocity = Vector2(0,0)
@@ -25,8 +32,8 @@ func _ready():
 	var seek = rand_range(0,1.6)
 	$AnimationPlayer.play("Fly")
 	$AnimationPlayer.seek(seek,true)
-	if path != null and get_node(path) != null and get_node(path).curve != null:
-		curve = get_node(path).curve
+	if path != null and path != null and path.curve != null:
+		curve = path.curve
 		var highest
 		var lowest
 		for i in range(curve.get_point_count()):
