@@ -30,6 +30,10 @@ func set_bar_percentage(perc:float):
 		$AnimationPlayer.seek(0,true)
 		$AnimationPlayer.stop(true)
 
+func update_score():
+	set_score(Utility.score)
+	set_high_score(Utility.high_score)
+
 func set_score(new_score:int):
 	var score_string = ""
 	if new_score > 999:
@@ -50,6 +54,6 @@ func set_high_score(new_score:int):
 		score_string = str(new_score)
 	while score_string.length() < 3:
 		score_string = "0"+score_string
-	score_texture_1.texture = numbers[int(score_string[0])]
-	score_texture_2.texture = numbers[int(score_string[1])]
-	score_texture_3.texture = numbers[int(score_string[2])]
+	high_score_texture_1.texture = numbers[int(score_string[0])]
+	high_score_texture_2.texture = numbers[int(score_string[1])]
+	high_score_texture_3.texture = numbers[int(score_string[2])]

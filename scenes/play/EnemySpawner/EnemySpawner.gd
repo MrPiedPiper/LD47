@@ -24,6 +24,8 @@ var wave = []
 var min_cooldown = 0.5
 var max_cooldown = 1.5
 
+var is_spawning = false
+
 func _ready():
 	for i in enemies:
 		var curr = i.instance()
@@ -70,6 +72,7 @@ func populate_wave():
 			hat -= 1
 
 func spawn_random_wave(diff):
+	is_spawning = true
 	difficulty = int(min(diff,max_difficulty))
 	populate_wave()
 	randomize_wave()
@@ -82,6 +85,8 @@ func get_random_path():
 	return paths[randi()%3]
 
 func _on_spawn_cooldown_timeout():
+	if !is_spawning:
+		return
 	if wave.size() == 0:
 		emit_signal("wave_complete")
 		return
@@ -101,3 +106,7 @@ func _on_spawn_cooldown_timeout():
 	
 	$spawn_cooldown.wait_time = rand_range(min_cooldown,max_cooldown)
 	$spawn_cooldown.start()
+
+func stop():
+	is_spawning = false
+	$spawn_cooldown.stop()
