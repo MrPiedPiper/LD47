@@ -23,17 +23,16 @@ __meta__ = {
 node_front = NodePath("../EnemiesFront")
 node_behind = NodePath("../EnemiesBack")
 
+[node name="Sky" type="Sprite" parent="."]
+position = Vector2( 512, 264 )
+texture = ExtResource( 5 )
+
 [node name="Sun" type="Node2D" parent="."]
-position = Vector2( 510, 455.15 )
+position = Vector2( 528, 648 )
 
 [node name="Sprite" type="Sprite" parent="Sun"]
 position = Vector2( -400, 0 )
 texture = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, 362.248 )
-texture = ExtResource( 5 )
-centered = false
 
 [node name="EnemiesBack" type="Node2D" parent="."]
 
