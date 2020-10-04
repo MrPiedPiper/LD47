@@ -7,6 +7,8 @@ onready var path_right = $Path2DRight
 onready var path_circle = $Path2DCircle
 onready var paths = [path_left,path_circle,path_right]
 
+export var max_difficulty = 100
+
 export var node_front:NodePath
 export var node_behind:NodePath
 
@@ -67,7 +69,7 @@ func populate_wave():
 			hat -= 1
 
 func spawn_random_wave(diff):
-	difficulty = int(diff)
+	difficulty = int(min(diff,max_difficulty))
 	populate_wave()
 	randomize_wave()
 	$spawn_cooldown.wait_time = rand_range(min_cooldown,max_cooldown)
@@ -84,9 +86,15 @@ func _on_spawn_cooldown_timeout():
 		return
 	var new_spawn = wave[0].instance()
 	wave.remove(0)
-	var test = get_random_path()
-	new_spawn.path = test
+	var path = get_random_path()
+	new_spawn.path = path
+	
+	new_spawn.is_looping = true
+	
+	new_spawn.connect("move_to_front",get_parent(),"_on_Enemy_move_to_front")
+	new_spawn.connect("move_to_back",get_parent(),"_on_Enemy_move_to_back")
+	
 	new_spawn.position = new_spawn.path.curve.get_point_position(0)
-	get_node(node_front).add_child(new_spawn)
+	get_node(node_behind).add_child(new_spawn)
 	$spawn_cooldown.wait_time = rand_range(min_cooldown,max_cooldown)
 	$spawn_cooldown.start()

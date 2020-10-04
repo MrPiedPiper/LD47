@@ -9,7 +9,6 @@ var time = start_time
 var elapsed = 0
 
 func _ready():
-	$EnemySpawner.spawn_random_wave(1)
 	Utility.score = 0
 
 func _process(delta):
@@ -33,3 +32,7 @@ func _on_PlayerChicken_scored(score):
 
 func _on_EnemySpawner_wave_complete():
 	$EnemySpawner.spawn_random_wave(elapsed)
+
+func _on_Menu_play_game_pressed():
+	$EnemySpawner.spawn_random_wave(1)
+	$UI/Menu.hide()
