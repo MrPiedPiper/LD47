@@ -221,7 +221,6 @@ hframes = 10
 frame = 8
 
 [node name="ParticleBurst" parent="Stretchie/End" index="4" instance=ExtResource( 3 )]
-color = Color( 0.0745098, 0.368627, 0.0470588, 1 )
 
 [node name="Area2DAttack" type="Area2D" parent="Stretchie/End" index="5" groups=[
 "attack",

@@ -53,7 +53,7 @@ func populate_wave():
 	wave = []
 	var hat = difficulty
 	
-	var bad_spawn_count = int(hat/5)
+	var bad_spawn_count = int(hat/3)
 	for i in bad_spawn_count:
 		wave.append(bad_spawns[0])
 	

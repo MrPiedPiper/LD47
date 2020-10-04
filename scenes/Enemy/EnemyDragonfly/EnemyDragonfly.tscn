@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/Bug/bug_spritesheet.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Fly"
+length = 1.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mobile:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 69.13, -62.5083 ), Vector2( 50.8542, 29.4001 ), Vector2( 0, 0 ), Vector2( -51.384, -43.1731 ), Vector2( -56.9461, 48.2056 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Mobile:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -30.1, 11.2, 156.32, 221.283, 142.26, 14.3, -30.1 ]
+}
+
+[node name="EnemyDragonfly" instance=ExtResource( 1 )]
+score = 3
+health = 2
+has_damaged_sprite = true
+difficulty = 2
+
+[node name="Mobile" parent="." index="0"]
+position = Vector2( -45.5451, 44.6781 )
+rotation = -0.0687056
+
+[node name="Sprite" parent="Mobile" index="2"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+offset = Vector2( -0.5, 0.5 )
+hframes = 2
+region_enabled = true
+region_rect = Rect2( 0, 16, 16, 8 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+anims/Fly = SubResource( 1 )

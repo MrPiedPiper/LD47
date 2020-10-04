@@ -5,8 +5,9 @@ signal move_to_back
 
 export(NodePath) var path
 export var is_looping = false
-export var score = -1
+export var score = 1
 export var health = 1
+export var has_damaged_sprite:bool
 
 enum DIFFICULTY {
 	EASY=1,
@@ -83,8 +84,9 @@ func damage(amount:int):
 	health -= amount
 	if health <= 0:
 		queue_free()
-
-
+	elif health == 1 and has_damaged_sprite:
+		$Mobile/Sprite.frame = 1
+		
 
 
 

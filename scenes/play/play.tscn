@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MainMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player/PlayerStretch/PlayerChicken/PlayerChicken.tscn" type="PackedScene" id=2]
@@ -8,6 +8,22 @@
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://scenes/play/EnemySpawner/EnemySpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/utility/ParticleBurst/ParticleBurst.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sky:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Play" type="Node2D"]
 script = ExtResource( 3 )
@@ -55,6 +71,9 @@ margin_left = -1.18921
 margin_right = -1.18921
 
 [node name="ParticleBurst" parent="." instance=ExtResource( 8 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hurt = SubResource( 1 )
 [connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_EnemySpawner_enemy_spawned"]
 [connection signal="wave_complete" from="EnemySpawner" to="." method="_on_EnemySpawner_wave_complete"]
 [connection signal="attack_completed" from="PlayerChicken" to="." method="_on_PlayerChicken_attack_completed"]
