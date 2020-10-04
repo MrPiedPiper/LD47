@@ -1,13 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player/PlayerStretch/PlayerChicken/PlayerChicken.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/play/play.gd" type="Script" id=3]
-
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array( -62.7375, 11.3461, 0, 0, 95.7235, 63.5541, 0, 0, 0, 0, 372.809, 176.529, 0, 0, 0, 0, 622.542, 159.88, 0, 0, 0, 0, 843.735, 43.3376, 0, 0, 0, 0, 1012.6, 213.394, 0, 0, 0, 0, 917.466, 339.45, 0, 0, 0, 0, 618.975, 265.719, 0, 0, 0, 0, 379.944, 372.748, 0, 0, 0, 0, 178.968, 333.504, 0, 0, 0, 0, 23.1819, 209.827, 0, 0, 0, 0, 95.7235, 63.5541 )
-}
+[ext_resource path="res://scenes/play/PlayUi/PlayUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/play/PlayUi/mountains.png" type="Texture" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://scenes/play/EnemySpawner/EnemySpawner.tscn" type="PackedScene" id=7]
 
 [node name="Play" type="Node2D"]
 script = ExtResource( 3 )
@@ -20,36 +18,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource( 1 )
+[node name="EnemySpawner" parent="." instance=ExtResource( 7 )]
+node_front = NodePath("../EnemiesFront")
+node_behind = NodePath("../EnemiesBack")
+
+[node name="Sky" type="Sprite" parent="."]
+position = Vector2( 512, 264 )
+texture = ExtResource( 5 )
+
+[node name="Sun" type="Node2D" parent="."]
+position = Vector2( 528, 648 )
+
+[node name="Sprite" type="Sprite" parent="Sun"]
+position = Vector2( -400, 0 )
+texture = ExtResource( 6 )
 
 [node name="EnemiesBack" type="Node2D" parent="."]
-
-[node name="Enemy4" parent="EnemiesBack" instance=ExtResource( 1 )]
-position = Vector2( 58.368, 94.2868 )
-path = NodePath("../../Path2D")
-
-[node name="Enemy3" parent="EnemiesBack" instance=ExtResource( 1 )]
-position = Vector2( 213.268, 31.4289 )
-path = NodePath("../../Path2D")
 
 [node name="PlayerChicken" parent="." instance=ExtResource( 2 )]
 position = Vector2( 484.989, 593.83 )
 
 [node name="EnemiesFront" type="Node2D" parent="."]
 
-[node name="Enemy" parent="EnemiesFront" instance=ExtResource( 1 )]
-position = Vector2( 145.92, -56.1231 )
-path = NodePath("../../Path2D")
+[node name="UI" type="Node" parent="."]
 
-[node name="Enemy2" parent="EnemiesFront" instance=ExtResource( 1 )]
-position = Vector2( 511.843, 193.063 )
-path = NodePath("../../Path2D")
-[connection signal="move_to_back" from="EnemiesBack/Enemy4" to="." method="_on_Enemy_move_to_back"]
-[connection signal="move_to_front" from="EnemiesBack/Enemy4" to="." method="_on_Enemy_move_to_front"]
-[connection signal="move_to_back" from="EnemiesBack/Enemy3" to="." method="_on_Enemy_move_to_back"]
-[connection signal="move_to_front" from="EnemiesBack/Enemy3" to="." method="_on_Enemy_move_to_front"]
-[connection signal="move_to_back" from="EnemiesFront/Enemy" to="." method="_on_Enemy_move_to_back"]
-[connection signal="move_to_front" from="EnemiesFront/Enemy" to="." method="_on_Enemy_move_to_front"]
-[connection signal="move_to_back" from="EnemiesFront/Enemy2" to="." method="_on_Enemy_move_to_back"]
-[connection signal="move_to_front" from="EnemiesFront/Enemy2" to="." method="_on_Enemy_move_to_front"]
+[node name="PlayUI" parent="UI" instance=ExtResource( 4 )]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+[connection signal="wave_complete" from="EnemySpawner" to="." method="_on_EnemySpawner_wave_complete"]
+[connection signal="scored" from="PlayerChicken" to="." method="_on_PlayerChicken_scored"]

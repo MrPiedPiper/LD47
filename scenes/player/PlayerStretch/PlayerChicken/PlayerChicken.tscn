@@ -196,24 +196,24 @@ texture = SubResource( 3 )
 position = Vector2( 85.8165, -359.158 )
 
 [node name="Sprite" parent="Stretchie/End" index="0"]
-position = Vector2( -162.156, -11.9724 )
+position = Vector2( -99.7013, 6.99346 )
 scale = Vector2( 8, 8 )
 texture = SubResource( 4 )
 
 [node name="Comb" type="Sprite" parent="Stretchie/End" index="1"]
-position = Vector2( -159.812, 62.7407 )
+position = Vector2( -97.7902, 78.594 )
 scale = Vector2( 8, 8 )
 texture = ExtResource( 2 )
 hframes = 10
 frame = 9
 
 [node name="Beak" type="Sprite" parent="Stretchie/End" index="2"]
-position = Vector2( -36.6795, -6.15261 )
+position = Vector2( 5.63802, 4.53207 )
 scale = Vector2( 8, 8 )
 texture = SubResource( 5 )
 
 [node name="Eye" type="Sprite" parent="Stretchie/End" index="3"]
-position = Vector2( -132.323, 78.8283 )
+position = Vector2( -116.063, 70.0787 )
 scale = Vector2( 8, 8 )
 texture = ExtResource( 2 )
 hframes = 10
