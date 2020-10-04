@@ -1,6 +1,7 @@
 extends Node2D
 
 signal scored
+signal attack_completed
 
 enum TYPE {
 	DEFAULT,
@@ -26,6 +27,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Attack":
 		$AnimationPlayer.play("Idle")
 		$AnimationPlayer.seek(saved_animation_seek,true)
+		finish_attack()
+
+func finish_attack():
+	pass
 
 func hit(enemy,damage):
 	if enemy.health - damage <= 0:

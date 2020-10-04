@@ -2,7 +2,6 @@ extends "res://scenes/player/Player.gd"
 
 onready var stretch = $Stretchie/Stretch
 onready var end = $Stretchie/End
-onready var stretch_timer = $StretchTimer
 onready var stretch_target = $Stretchie/End/Sprite/StretchTarget
 
 onready var stretch_default_pos = end.global_position
@@ -19,7 +18,6 @@ func clicked(pos):
 	if $AnimationPlayer.current_animation == "Idle":
 		saved_animation_seek = $AnimationPlayer.current_animation_position
 	$AnimationPlayer.play("Attack")
-	stretch_timer.start()
 
 func stretch_to(pos,can_flip):
 	var local_pos = pos - position
@@ -32,8 +30,9 @@ func stretch_to(pos,can_flip):
 	stretch.rotation = stretch.global_position.angle_to_point(stretch_target.global_position)-PI/2
 	stretch.scale.y = distance/stretch.get_rect().size.y
 
-func _on_StretchTimer_timeout():
+func finish_attack():
 	stretch_to(stretch_default_pos,true)
+	emit_signal("attack_completed")
 
 func _on_Area2DAttack_area_entered(area):
 	if area.owner.is_in_group("enemy"):

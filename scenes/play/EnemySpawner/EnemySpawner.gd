@@ -1,6 +1,7 @@
 extends Node2D
 
 signal wave_complete
+signal enemy_spawned
 
 onready var path_left = $Path2DLeft
 onready var path_right = $Path2DRight
@@ -96,5 +97,7 @@ func _on_spawn_cooldown_timeout():
 	
 	new_spawn.position = new_spawn.path.curve.get_point_position(0)
 	get_node(node_behind).add_child(new_spawn)
+	emit_signal("enemy_spawned")
+	
 	$spawn_cooldown.wait_time = rand_range(min_cooldown,max_cooldown)
 	$spawn_cooldown.start()

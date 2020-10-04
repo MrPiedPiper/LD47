@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Art/ui/top_right_corner_box.png" type="Texture" id=1]
 [ext_resource path="res://Art/ui/numbers.png" type="Texture" id=2]
 [ext_resource path="res://scenes/play/PlayUi/PlayUI.gd" type="Script" id=3]
+[ext_resource path="res://Art/ui/meter.png" type="Texture" id=4]
+[ext_resource path="res://Art/ui/meter_fill.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 32, 32 )
 expand_margin_left = 72.0
-expand_margin_bottom = 72.0
+expand_margin_top = 64.0
+expand_margin_bottom = 149.0
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
@@ -28,6 +30,45 @@ load_path = "res://.import/numbers.png-b6d56a347e16bf7b0b2c305cc257afb3.stex"
 atlas = SubResource( 5 )
 region = Rect2( 0, 0, 8, 8 )
 
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 96, 240 )
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform float fill = 0.0;
+
+void fragment(){
+	if(1.0-UV.y < fill){
+		COLOR = texture(TEXTURE,UV);
+	}else{
+		vec4 new_color = COLOR;
+		new_color.a = 0.0;
+		COLOR = new_color
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/fill = 0.0
+
+[sub_resource type="Animation" id=10]
+resource_name = "Warning"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/CenterContainer/MarginContainer/TextureRect:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 96, 240 ), Rect2( 96, 0, 96, 240 ), Rect2( 0, 0, 96, 240 ) ]
+}
+
 [node name="PlayUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -46,47 +87,134 @@ __meta__ = {
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
 margin_left = 896.0
 margin_right = 1024.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 72, 72 )
+margin_bottom = 160.0
+rect_min_size = Vector2( 72, 160 )
 size_flags_horizontal = 8
 custom_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
 margin_right = 128.0
-margin_bottom = 128.0
+margin_bottom = 160.0
 rect_min_size = Vector2( 128, 128 )
 custom_constants/margin_right = 16
+custom_constants/margin_top = 16
 custom_constants/margin_left = 16
 custom_constants/margin_bottom = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
 margin_left = 16.0
+margin_top = 16.0
 margin_right = 112.0
-margin_bottom = 112.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = -16
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 96.0
+margin_bottom = 72.0
+size_flags_vertical = 3
 custom_constants/separation = 0
 
-[node name="TextureRectScore1" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="TextureRectScore1" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 32.0
-margin_bottom = 112.0
+margin_bottom = 72.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = SubResource( 2 )
 stretch_mode = 6
 
-[node name="TextureRectScore2" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="TextureRectScore2" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 32.0
 margin_right = 64.0
-margin_bottom = 112.0
+margin_bottom = 72.0
 size_flags_horizontal = 7
 size_flags_vertical = 3
 texture = SubResource( 4 )
 stretch_mode = 6
 
-[node name="TextureRectScore3" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="TextureRectScore3" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 64.0
 margin_right = 96.0
-margin_bottom = 112.0
+margin_bottom = 72.0
 size_flags_horizontal = 7
 size_flags_vertical = 3
 texture = SubResource( 6 )
 stretch_mode = 6
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.376471 )
+margin_top = 56.0
+margin_right = 96.0
+margin_bottom = 128.0
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="TextureRectScore1" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 32.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource( 2 )
+stretch_mode = 6
+
+[node name="TextureRectScore2" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 32.0
+margin_right = 64.0
+margin_bottom = 72.0
+size_flags_horizontal = 7
+size_flags_vertical = 3
+texture = SubResource( 4 )
+stretch_mode = 6
+
+[node name="TextureRectScore3" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 64.0
+margin_right = 96.0
+margin_bottom = 72.0
+size_flags_horizontal = 7
+size_flags_vertical = 3
+texture = SubResource( 6 )
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 344.0
+margin_right = 112.0
+margin_bottom = 600.0
+size_flags_horizontal = 0
+size_flags_vertical = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer"]
+margin_right = 112.0
+margin_bottom = 256.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 104.0
+margin_bottom = 248.0
+texture = SubResource( 9 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer/MarginContainer"]
+margin_left = 8.0
+margin_top = 76.0
+margin_right = 104.0
+margin_bottom = 248.0
+size_flags_vertical = 10
+custom_constants/margin_right = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+
+[node name="FillTextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer/MarginContainer/MarginContainer"]
+material = SubResource( 8 )
+margin_left = 4.0
+margin_right = 92.0
+margin_bottom = 168.0
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Warning = SubResource( 10 )

@@ -19,15 +19,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EnemySpawner" parent="." instance=ExtResource( 7 )]
-node_front = NodePath("../EnemiesFront")
-node_behind = NodePath("../EnemiesBack")
-
 [node name="Sky" type="Sprite" parent="."]
 position = Vector2( 512, 264 )
 texture = ExtResource( 5 )
 
+[node name="EnemySpawner" parent="." instance=ExtResource( 7 )]
+node_front = NodePath("../EnemiesFront")
+node_behind = NodePath("../EnemiesBack")
+
 [node name="Sun" type="Node2D" parent="."]
+visible = false
 position = Vector2( 528, 648 )
 
 [node name="Sprite" type="Sprite" parent="Sun"]
@@ -44,10 +45,15 @@ position = Vector2( 484.989, 593.83 )
 [node name="UI" type="Node" parent="."]
 
 [node name="PlayUI" parent="UI" instance=ExtResource( 4 )]
+visible = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Menu" parent="UI" instance=ExtResource( 1 )]
+margin_left = -1.18921
+margin_right = -1.18921
+[connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_EnemySpawner_enemy_spawned"]
 [connection signal="wave_complete" from="EnemySpawner" to="." method="_on_EnemySpawner_wave_complete"]
+[connection signal="attack_completed" from="PlayerChicken" to="." method="_on_PlayerChicken_attack_completed"]
 [connection signal="scored" from="PlayerChicken" to="." method="_on_PlayerChicken_scored"]
 [connection signal="play_game_pressed" from="UI/Menu" to="." method="_on_Menu_play_game_pressed"]
