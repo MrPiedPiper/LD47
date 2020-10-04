@@ -1,25 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/Enemy/EnemyFly/EnemyFly.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player/PlayerStretch/PlayerChicken/PlayerChicken.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/play/play.gd" type="Script" id=3]
-[ext_resource path="res://scenes/play/PlayUi/PlayUI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/play/PlayUi/mountains.png" type="Texture" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( -62.7375, 11.3461, 0, 0, 95.7235, 63.5541, 0, 0, 0, 0, 372.809, 176.529, 0, 0, 0, 0, 622.542, 159.88, 0, 0, 0, 0, 843.735, 43.3376, 0, 0, 0, 0, 1012.6, 213.394, 0, 0, 0, 0, 917.466, 339.45, 0, 0, 0, 0, 618.975, 265.719, 0, 0, 0, 0, 379.944, 372.748, 0, 0, 0, 0, 178.968, 333.504, 0, 0, 0, 0, 23.1819, 209.827, 0, 0, 0, 0, 95.7235, 63.5541 )
-}
-
-[sub_resource type="Curve2D" id=2]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -230.257, 259.037, 0, 0, 0, 0, 48.3426, 147.314, 0, 0, 0, 0, 113.396, 203.882, 0, 0, 0, 0, 201.078, 138.828, 0, 0, 0, 0, 390.582, 78.0173, 0, 0, 0, 0, 433.009, 225.096, 0, 0, 0, 0, 582.915, 196.811, 0, 0, 0, 0, 700.295, 199.64, 0, 0, 0, 0, 771.006, 242.066, 0, 0, 0, 0, 861.516, 171.355, 0, 0, 0, 0, 942.126, 256.208, 0, 0, 0, 0, 916.67, 335.404, 0, 0, 0, 0, 729.994, 423.085, 0, 0, 0, 0, 598.472, 324.091, 0, 0, 0, 0, 503.719, 393.387, 0, 0, 0, 0, 400.482, 383.487, 0, 0, 0, 0, 237.847, 427.328, 0, 0, 0, 0, 179.864, 309.948, 0, 0, 0, 0, 121.882, 295.806, 0, 0, 0, 0, 128.953, 165.699, 0, 0, 0, 0, 278.859, 104.887, 0, 0, 0, 0, 377.854, 174.184, 0, 0, 0, 0, 516.447, 145.9, 0, 0, 0, 0, 636.656, 168.527, 0, 0, 0, 0, 670.597, 216.61, 0, 0, 0, 0, 772.42, 182.669, 0, 0, 0, 0, 879.9, 223.681, 0, 0, 0, 0, 998.694, 225.096, 0, 0, 0, 0, 1147.19, 260.451 )
-}
-
-[sub_resource type="Curve2D" id=3]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1175.47, 352.375, 0, 0, 0, 0, 995.866, 189.74, 0, 0, 0, 0, 766.763, 341.061, 0, 0, 0, 0, 694.638, 302.877, 0, 0, 0, 0, 560.288, 331.162, 0, 0, 0, 0, 362.298, 264.694, 0, 0, 0, 0, 244.918, 358.032, 0, 0, 0, 0, 216.634, 304.292, 0, 0, 0, 0, 73.7984, 263.279, 0, 0, 0, 0, 22.8867, 184.083, 0, 0, 0, 0, 123.296, 58.2183, 0, 0, 0, 0, 177.036, 137.414, 0, 0, 0, 0, 319.872, 111.958, 0, 0, 0, 0, 434.423, 164.284, 0, 0, 0, 0, 585.744, 148.728, 0, 0, 0, 0, 696.052, 76.6031, 0, 0, 0, 0, 759.692, 165.699, 0, 0, 0, 0, 884.143, 141.657, 0, 0, 0, 0, 909.599, 227.924, 0, 0, 0, 0, 858.687, 300.049, 0, 0, 0, 0, 717.266, 365.103, 0, 0, 0, 0, 595.643, 304.292, 0, 0, 0, 0, 471.192, 341.061, 0, 0, 0, 0, 324.114, 383.487, 0, 0, 0, 0, 244.918, 341.061, 0, 0, 0, 0, 126.124, 339.647, 0, 0, 0, 0, -25.1965, 352.375, 0, 0, 0, 0, -111.464, 325.505 )
 }
 
 [node name="Play" type="Node2D"]
@@ -33,68 +20,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sun" type="Node2D" parent="."]
-position = Vector2( 510, 455.15 )
-
-[node name="Sprite" type="Sprite" parent="Sun"]
-position = Vector2( -400, 0 )
-texture = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, 362.248 )
-texture = ExtResource( 5 )
-centered = false
-
-[node name="Path2DCircle" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 1 )
-
-[node name="Path2DRight" type="Path2D" parent="."]
-curve = SubResource( 2 )
-
-[node name="Path2DLeft" type="Path2D" parent="."]
-curve = SubResource( 3 )
 
 [node name="EnemiesBack" type="Node2D" parent="."]
 
-[node name="EnemyFly" parent="EnemiesBack" instance=ExtResource( 1 )]
-position = Vector2( -258.135, 268.668 )
-path = NodePath("../../Path2DRight")
+[node name="Enemy4" parent="EnemiesBack" instance=ExtResource( 1 )]
+position = Vector2( 58.368, 94.2868 )
+path = NodePath("../../Path2D")
 
-[node name="EnemyFly2" parent="EnemiesBack" instance=ExtResource( 1 )]
-position = Vector2( -464.424, 286.131 )
-path = NodePath("../../Path2DRight")
+[node name="Enemy3" parent="EnemiesBack" instance=ExtResource( 1 )]
+position = Vector2( 213.268, 31.4289 )
+path = NodePath("../../Path2D")
 
 [node name="PlayerChicken" parent="." instance=ExtResource( 2 )]
 position = Vector2( 484.989, 593.83 )
 
 [node name="EnemiesFront" type="Node2D" parent="."]
 
-[node name="EnemyFly3" parent="EnemiesFront" instance=ExtResource( 1 )]
-position = Vector2( 1258.45, 278.883 )
-path = NodePath("../../Path2DLeft")
+[node name="Enemy" parent="EnemiesFront" instance=ExtResource( 1 )]
+position = Vector2( 145.92, -56.1231 )
+path = NodePath("../../Path2D")
 
-[node name="EnemyFly4" parent="EnemiesFront" instance=ExtResource( 1 )]
-position = Vector2( 1440.49, 242.276 )
-path = NodePath("../../Path2DLeft")
-
-[node name="EnemyFly5" parent="EnemiesFront" instance=ExtResource( 1 )]
-position = Vector2( 264.004, -74.9201 )
-path = NodePath("../../Path2DCircle")
-is_looping = true
-
-[node name="UI" type="Node" parent="."]
-
-[node name="PlayUI" parent="UI" instance=ExtResource( 4 )]
-size_flags_horizontal = 3
-size_flags_vertical = 3
-[connection signal="move_to_back" from="EnemiesBack/EnemyFly" to="." method="_on_Enemy_move_to_back"]
-[connection signal="move_to_front" from="EnemiesBack/EnemyFly" to="." method="_on_Enemy_move_to_front"]
-[connection signal="move_to_back" from="EnemiesBack/EnemyFly2" to="." method="_on_Enemy_move_to_back"]
-[connection signal="move_to_front" from="EnemiesBack/EnemyFly2" to="." method="_on_Enemy_move_to_front"]
-[connection signal="scored" from="PlayerChicken" to="." method="_on_PlayerChicken_scored"]
-[connection signal="move_to_back" from="EnemiesFront/EnemyFly3" to="." method="_on_Enemy_move_to_back"]
-[connection signal="move_to_front" from="EnemiesFront/EnemyFly3" to="." method="_on_Enemy_move_to_front"]
-[connection signal="move_to_back" from="EnemiesFront/EnemyFly4" to="." method="_on_Enemy_move_to_back"]
-[connection signal="move_to_front" from="EnemiesFront/EnemyFly4" to="." method="_on_Enemy_move_to_front"]
-[connection signal="move_to_back" from="EnemiesFront/EnemyFly5" to="." method="_on_Enemy_move_to_back"]
-[connection signal="move_to_front" from="EnemiesFront/EnemyFly5" to="." method="_on_Enemy_move_to_front"]
+[node name="Enemy2" parent="EnemiesFront" instance=ExtResource( 1 )]
+position = Vector2( 511.843, 193.063 )
+path = NodePath("../../Path2D")
+[connection signal="move_to_back" from="EnemiesBack/Enemy4" to="." method="_on_Enemy_move_to_back"]
+[connection signal="move_to_front" from="EnemiesBack/Enemy4" to="." method="_on_Enemy_move_to_front"]
+[connection signal="move_to_back" from="EnemiesBack/Enemy3" to="." method="_on_Enemy_move_to_back"]
+[connection signal="move_to_front" from="EnemiesBack/Enemy3" to="." method="_on_Enemy_move_to_front"]
+[connection signal="move_to_back" from="EnemiesFront/Enemy" to="." method="_on_Enemy_move_to_back"]
+[connection signal="move_to_front" from="EnemiesFront/Enemy" to="." method="_on_Enemy_move_to_front"]
+[connection signal="move_to_back" from="EnemiesFront/Enemy2" to="." method="_on_Enemy_move_to_back"]
+[connection signal="move_to_front" from="EnemiesFront/Enemy2" to="." method="_on_Enemy_move_to_front"]
