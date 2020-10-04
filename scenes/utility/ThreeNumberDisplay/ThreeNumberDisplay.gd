@@ -18,8 +18,6 @@ func set_numbers(new_numbers):
 		number_string = str(new_numbers)
 	while number_string.length() < 3:
 		number_string = "0"+number_string
-	print(number_string)
-	print(numbers)
 	$Number1.texture = numbers[int(number_string[0])]
 	$Number2.texture = numbers[int(number_string[1])]
 	$Number3.texture = numbers[int(number_string[2])]

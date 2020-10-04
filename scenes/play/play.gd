@@ -31,7 +31,7 @@ func _on_Enemy_move_to_front(enemy):
 
 
 func _on_PlayerChicken_scored(score):
-	Utility.score += score
+	Utility.score = max(0,Utility.score + score)
 	
 	if Utility.score > Utility.high_score:
 		Utility.high_score = Utility.score

@@ -14,6 +14,9 @@ export var node_front:NodePath
 export var node_behind:NodePath
 
 export(Array,PackedScene) var enemies = []
+export(Array,PackedScene) var bad_spawns = []
+export(Array,PackedScene) var good_spawns = []
+
 var easy_enemies = []
 var medium_enemies = []
 var hard_enemies = []
@@ -49,6 +52,11 @@ func randomize_wave():
 func populate_wave():
 	wave = []
 	var hat = difficulty
+	
+	var bad_spawn_count = int(hat/5)
+	for i in bad_spawn_count:
+		wave.append(bad_spawns[0])
+	
 	if hat >= 6:
 		if hard_enemies.size() > 0:
 			var hard_points = int(hat/2)
@@ -94,8 +102,6 @@ func _on_spawn_cooldown_timeout():
 	wave.remove(0)
 	var path = get_random_path()
 	new_spawn.path = path
-	
-	new_spawn.is_looping = true
 	
 	new_spawn.connect("move_to_front",get_parent(),"_on_Enemy_move_to_front")
 	new_spawn.connect("move_to_back",get_parent(),"_on_Enemy_move_to_back")

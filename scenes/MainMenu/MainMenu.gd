@@ -2,8 +2,8 @@ extends Control
 
 signal play_game_pressed
 
-onready var last_score_display = $MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/ThreeNumberDisplayHigh
-onready var high_score_display = $MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/ThreeNumberDisplayLast
+onready var last_score_display = $MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/ThreeNumberDisplayLast
+onready var high_score_display = $MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/ThreeNumberDisplayHigh
 
 func _on_LetsRollButton_button_up():
 	emit_signal("play_game_pressed")

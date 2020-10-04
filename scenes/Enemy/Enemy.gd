@@ -5,7 +5,7 @@ signal move_to_back
 
 export(NodePath) var path
 export var is_looping = false
-export var score = 1
+export var score = -1
 export var health = 1
 
 enum DIFFICULTY {

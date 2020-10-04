@@ -3,15 +3,14 @@
 [ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Bug/bug_spritesheet.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=4]
 radius = 18.3428
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "Fly"
+[sub_resource type="Animation" id=3]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -40,18 +39,20 @@ tracks/1/keys = {
 }
 
 [node name="EnemyFly" instance=ExtResource( 1 )]
+is_looping = true
+score = 1
 
 [node name="Mobile" parent="." index="0"]
 position = Vector2( 0, -28.9476 )
 rotation = -0.523599
 
 [node name="CollisionShape2D" parent="Mobile/Area2DHitbox" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Sprite" parent="Mobile" index="2"]
 scale = Vector2( 8, 8 )
-texture = SubResource( 1 )
+texture = SubResource( 5 )
 region_rect = Rect2( 0, 0, 8, 8 )
 
 [node name="AnimationPlayer" parent="." index="1"]
-anims/Fly = SubResource( 2 )
+anims/Fly = SubResource( 3 )
