@@ -14,18 +14,18 @@ expand_margin_bottom = 72.0
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="StreamTexture" id=5]
+[sub_resource type="StreamTexture" id=3]
 load_path = "res://.import/numbers.png-b6d56a347e16bf7b0b2c305cc257afb3.stex"
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = SubResource( 5 )
+atlas = SubResource( 3 )
 region = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="StreamTexture" id=6]
+[sub_resource type="StreamTexture" id=5]
 load_path = "res://.import/numbers.png-b6d56a347e16bf7b0b2c305cc257afb3.stex"
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = SubResource( 6 )
+[sub_resource type="AtlasTexture" id=6]
+atlas = SubResource( 5 )
 region = Rect2( 0, 0, 8, 8 )
 
 [node name="PlayUI" type="Control"]
@@ -88,5 +88,5 @@ margin_right = 96.0
 margin_bottom = 112.0
 size_flags_horizontal = 7
 size_flags_vertical = 3
-texture = SubResource( 7 )
+texture = SubResource( 6 )
 stretch_mode = 6

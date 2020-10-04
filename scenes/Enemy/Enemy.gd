@@ -4,11 +4,12 @@ signal move_to_front
 signal move_to_back
 
 export(NodePath) var path
+export var is_looping = false
 export var score = 1
 export var health = 1
 
-var speed = 8
-var max_speed = 150
+var max_speed = 480
+var speed = max_speed / 8
 var velocity = Vector2(0,0)
 var target = Vector2(0,0)
 
@@ -22,7 +23,6 @@ var is_front = false
 func _ready():
 	randomize()
 	var seek = rand_range(0,1.6)
-	print(seek)
 	$AnimationPlayer.play("Fly")
 	$AnimationPlayer.seek(seek,true)
 	if path != null and get_node(path) != null and get_node(path).curve != null:
@@ -47,7 +47,13 @@ func _physics_process(delta):
 	rotation = velocity.angle()
 	position += velocity * delta 
 	if position.distance_to(target) < 100:
-		points.insert(0,points.pop_back())
+		if is_looping:
+			points.insert(0,points.pop_back())
+		else:
+			points.remove(0)
+			if points.size() == 0:
+				queue_free()
+				return
 		target = points[0]
 		if target.y > midway and !is_front:
 			is_front = true

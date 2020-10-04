@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/player/PlayerStretch/PlayerStretch.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Chicken/chicken_spritesheet.png" type="Texture" id=2]
@@ -19,18 +19,18 @@ region = Rect2( 320, 40, 56, 24 )
 atlas = SubResource( 2 )
 region = Rect2( 264, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
-region = Rect2( 160, 8, 24, 40 )
+region = Rect2( 160, 0, 32, 48 )
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 41.1551
+radius = 38.7905
 
-[sub_resource type="Animation" id=6]
-resource_name = "example"
-length = 0.3
+[sub_resource type="Animation" id=7]
+resource_name = "Attack"
+length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Stretchie/End/Sprite2:texture:region")
+tracks/0/path = NodePath("../CPUParticles2D2:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -39,31 +39,144 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Rect2( 224, 8, 24, 40 ), Rect2( 160, 8, 24, 40 ) ]
+"values": [ false, true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../CPUParticles2D2:emitting")
+tracks/1/path = NodePath("Stretchie/End/Area2DAttack/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ true, false, true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Stretchie/End/Area2DAttack/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Stretchie/End/Sprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false, true ]
+"values": [ Vector2( -143.342, -1.4549 ), Vector2( -143.342, -0.454895 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Stretchie/End/Comb:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -143.324, 63.797 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Stretchie/End/Eye:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( -119.771, 49.9045 ), Vector2( -165.925, 21.4502 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Stretchie/End/Beak:texture:region")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Rect2( 224, 0, 32, 48 ), Rect2( 160, 0, 32, 48 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Stretchie/End/Beak:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( -18.3207, 17.1408 ), Vector2( -18.3207, 17.1408 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Idle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stretchie/End/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 4, 0.90125, 2.82843, 0.901251, 3.4822 ),
+"update": 0,
+"values": [ Vector2( -166.342, -13.4549 ), Vector2( -105.866, 7.96384 ), Vector2( -37.8304, -2.74551 ), Vector2( -105.866, 7.96384 ), Vector2( -166.342, -13.4549 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Stretchie/End/Beak:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 4.14106, 1.1487, 2.54912, 1.27456, 1 ),
+"update": 0,
+"values": [ Vector2( -41.5445, -7.58121 ), Vector2( 1.36088, 5.01801 ), Vector2( 76.9761, -3.57294 ), Vector2( 1.36088, 5.01801 ), Vector2( -41.5445, -7.58121 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Stretchie/End/Eye:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5, 1.6, 2.5, 3.5 ),
+"transitions": PoolRealArray( 1.27456, 1, 1.7411, 1 ),
+"update": 0,
+"values": [ Vector2( -164.349, 56.5491 ), Vector2( -55.666, 87.0016 ), Vector2( -15.2172, 68.8195 ), Vector2( -110.077, 94.304 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Stretchie/End/Comb:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 3.86375, 0.594603, 2.46229, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -165.324, 61.072 ), Vector2( -104.15, 79.5926 ), Vector2( -36.2407, 68.9292 ), Vector2( -104.15, 79.5926 ), Vector2( -165.324, 61.072 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Stretchie/End/Area2DAttack/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [node name="PlayerChicken" instance=ExtResource( 1 )]
@@ -75,7 +188,7 @@ texture = SubResource( 1 )
 offset = Vector2( 0, -16 )
 region_rect = Rect2( 464, 16, 32, 32 )
 
-[node name="Sprite3" type="Sprite" parent="Stretchie" index="1"]
+[node name="Torso" type="Sprite" parent="Stretchie" index="1"]
 position = Vector2( -100.586, -73.9115 )
 scale = Vector2( 8, 8 )
 texture = SubResource( 3 )
@@ -84,16 +197,33 @@ texture = SubResource( 3 )
 position = Vector2( 85.8165, -359.158 )
 
 [node name="Sprite" parent="Stretchie/End" index="0"]
-position = Vector2( -119.407, 0 )
+position = Vector2( -166.342, -13.4549 )
 scale = Vector2( 8, 8 )
 texture = SubResource( 4 )
 
-[node name="Sprite2" type="Sprite" parent="Stretchie/End" index="1"]
-position = Vector2( -35.2947, 46.6279 )
+[node name="Comb" type="Sprite" parent="Stretchie/End" index="1"]
+position = Vector2( -165.324, 61.072 )
 scale = Vector2( 8, 8 )
-texture = SubResource( 7 )
+texture = ExtResource( 2 )
+hframes = 10
+frame = 9
 
-[node name="Area2DAttack" type="Area2D" parent="Stretchie/End" index="2" groups=[
+[node name="Beak" type="Sprite" parent="Stretchie/End" index="2"]
+position = Vector2( -41.5445, -7.58121 )
+scale = Vector2( 8, 8 )
+texture = SubResource( 5 )
+
+[node name="Eye" type="Sprite" parent="Stretchie/End" index="3"]
+position = Vector2( -137.213, 75.4266 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 10
+frame = 8
+
+[node name="ParticleBurst" parent="Stretchie/End" index="4" instance=ExtResource( 3 )]
+color = Color( 0.0745098, 0.368627, 0.0470588, 1 )
+
+[node name="Area2DAttack" type="Area2D" parent="Stretchie/End" index="5" groups=[
 "attack",
 ]]
 position = Vector2( -0.0268555, 0 )
@@ -102,15 +232,12 @@ position = Vector2( -0.0268555, 0 )
 shape = SubResource( 8 )
 disabled = true
 
-[node name="StretchTarget" parent="Stretchie/End" index="3"]
-position = Vector2( -132.021, 89.9759 )
-
-[node name="ParticleBurst" parent="Stretchie/End" index="4" instance=ExtResource( 3 )]
-color = Color( 0.0745098, 0.368627, 0.0470588, 1 )
-
 [node name="StretchTimer" parent="." index="1"]
 wait_time = 0.31
+one_shot = true
 
 [node name="AnimationPlayer" parent="." index="2"]
-anims/example = SubResource( 6 )
+autoplay = "Idle"
+anims/Attack = SubResource( 7 )
+anims/Idle = SubResource( 6 )
 [connection signal="area_entered" from="Stretchie/End/Area2DAttack" to="." method="_on_Area2DAttack_area_entered"]
