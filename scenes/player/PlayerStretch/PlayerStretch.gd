@@ -9,19 +9,19 @@ onready var stretch_default_pos = end.global_position
 
 func _ready():
 	type = TYPE.STRETCH
-	stretch_to(stretch_default_pos)
+	stretch_to(stretch_default_pos,false)
+
+func _process(delta):
+	stretch_to(end.global_position,false)
 
 func clicked(pos):
-	stretch_to(pos)
+	stretch_to(pos,true)
+	if $AnimationPlayer.current_animation == "Idle":
+		saved_animation_seek = $AnimationPlayer.current_animation_position
+	$AnimationPlayer.play("Attack")
 	stretch_timer.start()
-<<<<<<< HEAD
-#	$AnimationPlayer.play("example")
-=======
-#	$Stretchie/End/CPUParticles2D.restart()
-	$AnimationPlayer.play("example")
->>>>>>> bd78f6223406759652e0090971816788552cac0c
 
-func stretch_to(pos):
+func stretch_to(pos,can_flip):
 	var local_pos = pos - position
 	if local_pos.x < 0:
 		end.scale.x = -abs(end.scale.x)
@@ -33,12 +33,12 @@ func stretch_to(pos):
 	stretch.scale.y = distance/stretch.get_rect().size.y
 
 func _on_StretchTimer_timeout():
-	stretch_to(stretch_default_pos)
+	stretch_to(stretch_default_pos,true)
 
 func _on_Area2DAttack_area_entered(area):
-	print("Hit!")
 	if area.owner.is_in_group("enemy"):
 		$Stretchie/End/ParticleBurst.burst(area.global_position)
+		hit(area.owner,attack)
 		
 
 
