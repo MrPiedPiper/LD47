@@ -9,7 +9,7 @@ var start_time = 60
 var time = start_time
 var elapsed = 0
 
-var lose_threshold:float = 20.0
+var lose_threshold:float = 30.0
 
 func _ready():
 	Utility.score = 0
@@ -29,7 +29,6 @@ func _on_Enemy_move_to_front(enemy):
 	enemy.get_parent().remove_child(enemy)
 	front_enemies.add_child(enemy)
 
-
 func _on_PlayerChicken_scored(score):
 	Utility.score = max(0,Utility.score + score)
 	if score < 0:
@@ -46,6 +45,7 @@ func _on_EnemySpawner_wave_complete():
 
 func _on_Menu_play_game_pressed():
 	is_started = true
+	$AudioStreamPlayer.play(0)
 	Utility.score = 0
 	update_bar()
 	$EnemySpawner.spawn_random_wave(1)
@@ -64,6 +64,9 @@ func update_bar():
 		for i in back_enemies.get_children()+front_enemies.get_children():
 			$ParticleBurst.burst(i.global_position)
 			i.queue_free()
+		elapsed = 0
+		time = start_time
+		$AudioStreamPlayer.stop()
 		$EnemySpawner.stop()
 		$UI/Menu.update_score()
 		$UI/PlayUI.hide()
