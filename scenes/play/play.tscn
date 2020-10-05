@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MainMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player/PlayerStretch/PlayerChicken/PlayerChicken.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://scenes/play/EnemySpawner/EnemySpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/utility/ParticleBurst/ParticleBurst.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Music/Option #1.ogg" type="AudioStream" id=9]
 
 [node name="Play" type="Node2D"]
 script = ExtResource( 3 )
@@ -56,12 +55,6 @@ margin_left = -1.18921
 margin_right = -1.18921
 
 [node name="ParticleBurst" parent="." instance=ExtResource( 8 )]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Hurt = SubResource( 1 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
 [connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_EnemySpawner_enemy_spawned"]
 [connection signal="wave_complete" from="EnemySpawner" to="." method="_on_EnemySpawner_wave_complete"]
 [connection signal="attack_completed" from="PlayerChicken" to="." method="_on_PlayerChicken_attack_completed"]
