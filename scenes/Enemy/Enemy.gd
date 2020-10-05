@@ -33,7 +33,7 @@ func _ready():
 	var seek = rand_range(0,1.6)
 	$AnimationPlayer.play("Fly")
 	$AnimationPlayer.seek(seek,true)
-	if path != null and path != null and path.curve != null:
+	if !not path and path != null and path.curve != null:
 		curve = path.curve
 		var highest
 		var lowest
