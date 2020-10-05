@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Fonts/Dosis/static/Dosis-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Art/ui/WoodNinepatch.png" type="Texture" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://GodotIcon.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Enemy/EnemyFly/EnemyFly.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Enemy/EnemyBee/EnemyBee.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Enemy/EnemyDragonfly/EnemyDragonfly.tscn" type="PackedScene" id=6]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/play/HowToPlay/HowToPlay.gd" type="Script" id=8]
 [ext_resource path="res://Art/ui/FullScreen.png" type="Texture" id=9]
 [ext_resource path="res://Art/ui/RadialMeterExample.png" type="Texture" id=10]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
