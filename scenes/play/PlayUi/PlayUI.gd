@@ -6,14 +6,15 @@ onready var high_score_display = $VBoxContainer/PanelContainer/MarginContainer/V
 onready var bar_fill = $VBoxContainer/CenterContainer/MarginContainer/MarginContainer/FillTextureRect
 
 func set_bar_percentage(perc:float):
-	bar_fill.material.set_shader_param("fill",perc)
-	if perc > 0.64: 
-		if !$AnimationPlayer.is_playing():
-			$AnimationPlayer.stop(true)
-			$AnimationPlayer.play("Warning")
-	else:
-		$AnimationPlayer.seek(0,true)
-		$AnimationPlayer.stop(true)
+	$VBoxContainer/MarginContainer/RadialMeter.set_percent(perc*100)
+#	bar_fill.material.set_shader_param("fill",perc)
+#	if perc > 0.64: 
+#		if !$AnimationPlayer.is_playing():
+#			$AnimationPlayer.stop(true)
+#			$AnimationPlayer.play("Warning")
+#	else:
+#		$AnimationPlayer.seek(0,true)
+#		$AnimationPlayer.stop(true)
 
 func update_score():
 	set_score(Utility.score)

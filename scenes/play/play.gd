@@ -72,11 +72,11 @@ func new_game():
 	is_started = true
 	$AudioStreamPlayer.play(0)
 	Utility.score = 0
-	update_bar()
 	$EnemySpawner.spawn_random_wave(1)
 	play_ui.update_score()
 	$UI/Menu.hide()
 	play_ui.show()
+	update_bar()
 
 func quit_game():
 	is_started = false
@@ -87,10 +87,8 @@ func quit_game():
 	time = start_time
 	$AudioStreamPlayer.stop()
 	$EnemySpawner.stop()
-	$UI/Menu.update_score()
 	$UI/PlayUI.hide()
 	$UI/Menu.show()
-	Utility.save_data()
 	$ScreenTransition.play("PlayToMain")
 
 func _notification(what):
@@ -103,6 +101,8 @@ func _notification(what):
 func game_over():
 	if Utility.score > Utility.high_score:
 		Utility.high_score = Utility.score
+	$UI/Menu.update_score()
+	Utility.save_data()
 	quit_game()
 
 func _on_PlayerChicken_attack_completed():
@@ -119,3 +119,8 @@ func _on_PlayerChicken_killed_bug(bug):
 		col = Color.red
 		score_popup_text = ""
 	$TextPopupGroup.spawn_text(str(score_popup_text,bug.score),bug.global_position,col)
+
+
+func _on_ScreenTransition_animation_finished(anim_name):
+	if anim_name == "PlayToMain":
+		update_bar()

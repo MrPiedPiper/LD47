@@ -260,7 +260,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Menu" parent="UI" instance=ExtResource( 1 )]
-margin_bottom = -0.00256348
+margin_bottom = -0.00262451
 
 [node name="ParticleBurst" parent="." instance=ExtResource( 8 )]
 

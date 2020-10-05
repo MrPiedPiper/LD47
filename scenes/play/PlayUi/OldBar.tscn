@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Art/ui/meter_fill.png" type="Texture" id=1]
+[ext_resource path="res://Art/ui/meter.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 96, 240 )
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform float fill = 0.0;
+
+void fragment(){
+	if(1.0-UV.y < fill){
+		COLOR = texture(TEXTURE,UV);
+	}else{
+		vec4 new_color = COLOR;
+		new_color.a = 0.0;
+		COLOR = new_color
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/fill = 0.0
+
+[node name="Control" type="Control"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 8.0
+margin_bottom = 8.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 96.0
+margin_bottom = 240.0
+texture = SubResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_top = 68.0
+margin_right = 96.0
+margin_bottom = 240.0
+size_flags_vertical = 10
+custom_constants/margin_right = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+
+[node name="FillTextureRect" type="TextureRect" parent="MarginContainer"]
+material = SubResource( 4 )
+margin_left = 4.0
+margin_right = 92.0
+margin_bottom = 168.0
+texture = ExtResource( 1 )
