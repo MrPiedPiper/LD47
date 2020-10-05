@@ -277,5 +277,6 @@ anims/PlayToMain = SubResource( 4 )
 [connection signal="wave_complete" from="EnemySpawner" to="." method="_on_EnemySpawner_wave_complete"]
 [connection signal="attack_completed" from="PlayerChicken" to="." method="_on_PlayerChicken_attack_completed"]
 [connection signal="scored" from="PlayerChicken" to="." method="_on_PlayerChicken_scored"]
+[connection signal="how_to_play_pressed" from="UI/Menu" to="." method="_on_Menu_how_to_play_pressed"]
 [connection signal="play_game_pressed" from="UI/Menu" to="." method="_on_Menu_play_game_pressed"]
 [connection signal="animation_finished" from="ScreenTransition" to="." method="_on_ScreenTransition_animation_finished"]

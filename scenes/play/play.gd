@@ -97,3 +97,7 @@ func game_over():
 
 func _on_PlayerChicken_attack_completed():
 	update_bar()
+
+func _on_Menu_how_to_play_pressed():
+		var new_how_to = how_to_play.instance()
+		$UI.add_child(new_how_to)
