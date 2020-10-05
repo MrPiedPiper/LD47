@@ -101,3 +101,11 @@ func _on_PlayerChicken_attack_completed():
 func _on_Menu_how_to_play_pressed():
 		var new_how_to = how_to_play.instance()
 		$UI.add_child(new_how_to)
+
+func _on_PlayerChicken_killed_bug(bug):
+	var col = Color.lime
+	var score_popup_text = "+"
+	if bug.score < 0:
+		col = Color.red
+		score_popup_text = ""
+	$TextPopupGroup.spawn_text(str(score_popup_text,bug.score),bug.global_position,col)

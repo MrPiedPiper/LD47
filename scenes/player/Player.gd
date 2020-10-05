@@ -2,6 +2,7 @@ extends Node2D
 
 signal scored
 signal attack_completed
+signal killed_bug
 
 enum TYPE {
 	DEFAULT,
@@ -35,6 +36,7 @@ func finish_attack():
 func hit(enemy,damage):
 	if enemy.health - damage <= 0:
 		emit_signal("scored",enemy.score)
+		emit_signal("killed_bug",enemy)
 	enemy.damage(damage)
 
 
