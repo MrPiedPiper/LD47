@@ -18,6 +18,7 @@ func _ready():
 	$UI/Menu.update_score()
 	
 	Utility.score = 0
+	get_tree().set_quit_on_go_back(false)
 
 func _process(delta):
 	$Sun.rotation_degrees += 180*delta/start_time
@@ -31,7 +32,7 @@ func _on_Enemy_move_to_back(enemy:Node2D):
 
 func _input(event):
 	if is_started and Input.is_action_just_pressed("escape"):
-		game_over()
+		quit_game()
 
 func _on_Enemy_move_to_front(enemy):
 	enemy.get_parent().remove_child(enemy)
@@ -77,10 +78,7 @@ func new_game():
 	$UI/Menu.hide()
 	play_ui.show()
 
-func game_over():
-	if Utility.score > Utility.high_score:
-		Utility.high_score = Utility.score
-		
+func quit_game():
 	is_started = false
 	for i in back_enemies.get_children()+front_enemies.get_children():
 		$ParticleBurst.burst(i.global_position)
@@ -94,6 +92,18 @@ func game_over():
 	$UI/Menu.show()
 	Utility.save_data()
 	$ScreenTransition.play("PlayToMain")
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
+		if is_started:
+			quit_game()
+		else:
+			get_tree().quit()
+
+func game_over():
+	if Utility.score > Utility.high_score:
+		Utility.high_score = Utility.score
+	quit_game()
 
 func _on_PlayerChicken_attack_completed():
 	update_bar()
