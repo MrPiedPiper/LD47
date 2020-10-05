@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Fonts/Dosis/static/Dosis-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Art/ui/WoodNinepatch.png" type="Texture" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://scenes/Enemy/EnemyDragonfly/EnemyDragonfly.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Art/Chicken/chicken_spritesheet.png" type="Texture" id=7]
 [ext_resource path="res://scenes/play/HowToPlay/HowToPlay.gd" type="Script" id=8]
+[ext_resource path="res://Art/ui/FullScreen.png" type="Texture" id=9]
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 48, 48 )
 margin_left = 16.0647
@@ -17,14 +18,15 @@ margin_right = 16.0565
 margin_top = 16.4093
 margin_bottom = 15.9113
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 7 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 24
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = 14
 font_data = ExtResource( 1 )
 
 [node name="HowToPlay" type="Control"]
@@ -51,7 +53,7 @@ __meta__ = {
 margin_left = 32.0
 margin_top = 32.0
 margin_right = 992.0
-margin_bottom = 568.0
+margin_bottom = 569.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 3 )
@@ -61,15 +63,15 @@ expand = true
 margin_left = 32.0
 margin_top = 32.0
 margin_right = 992.0
-margin_bottom = 568.0
+margin_bottom = 569.0
 mouse_filter = 1
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="MarginContainer/PanelContainer"]
 margin_left = 16.0647
 margin_top = 16.4093
 margin_right = 943.943
-margin_bottom = 520.089
+margin_bottom = 521.089
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -90,7 +92,7 @@ current = true
 margin_left = 751.943
 margin_top = 16.4093
 margin_right = 943.943
-margin_bottom = 520.089
+margin_bottom = 521.089
 mouse_filter = 1
 size_flags_horizontal = 10
 size_flags_vertical = 3
@@ -109,9 +111,9 @@ current = true
 
 [node name="ViewportContainer3" type="ViewportContainer" parent="MarginContainer/PanelContainer"]
 margin_left = 16.0647
-margin_top = 328.089
+margin_top = 329.089
 margin_right = 943.943
-margin_bottom = 520.089
+margin_bottom = 521.089
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 10
@@ -130,13 +132,13 @@ current = true
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer"]
 margin_left = 753.943
-margin_top = 330.089
+margin_top = 331.089
 margin_right = 943.943
-margin_bottom = 520.089
+margin_bottom = 521.089
 rect_min_size = Vector2( 190, 190 )
 size_flags_horizontal = 10
 size_flags_vertical = 10
-texture = SubResource( 4 )
+texture = SubResource( 2 )
 stretch_mode = 5
 flip_h = true
 
@@ -144,39 +146,81 @@ flip_h = true
 margin_left = 16.0647
 margin_top = 16.4093
 margin_right = 943.943
-margin_bottom = 520.089
+margin_bottom = 521.089
 mouse_filter = 1
-custom_constants/margin_top = 32
-custom_constants/margin_bottom = 32
+custom_constants/margin_top = 24
+custom_constants/margin_bottom = 24
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+margin_top = 24.0
+margin_right = 927.0
+margin_bottom = 480.0
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 margin_left = 164.0
-margin_top = 32.0
 margin_right = 763.0
-margin_bottom = 335.0
+margin_bottom = 237.0
 mouse_filter = 1
 size_flags_horizontal = 4
-size_flags_vertical = 0
-custom_fonts/font = SubResource( 2 )
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
 text = "Click or tap to eat bugs
-
 Watch your bug meter! If too many bugs accumulate, you lose
-
 Some bugs are harder to eat, but are worth more points
-
 Look out for the bees, if you eat them you will lose points!
-
 Make high scores and last as long as you can!"
 align = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer"]
-margin_top = 32.0
+[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_left = 190.0
+margin_top = 277.0
+margin_right = 737.0
+margin_bottom = 322.0
+mouse_filter = 1
+size_flags_horizontal = 4
+size_flags_vertical = 10
+custom_fonts/font = SubResource( 3 )
+text = "Press the ESC button when playing to go the main menu"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 326.0
 margin_right = 927.0
-margin_bottom = 471.0
+margin_bottom = 371.0
+size_flags_vertical = 0
+custom_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 311.0
+margin_right = 403.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 3 )
+text = "Press the"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 411.0
+margin_right = 443.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 32, 0 )
+texture = ExtResource( 9 )
+stretch_mode = 6
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 451.0
+margin_right = 615.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 3 )
+text = "toggle fullscreen"
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 375.0
+margin_right = 927.0
+margin_bottom = 456.0
 mouse_filter = 1
 size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+size_flags_vertical = 11
+custom_fonts/font = SubResource( 3 )
 text = "Click / tap to continue"
 align = 1
 valign = 2

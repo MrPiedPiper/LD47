@@ -16,7 +16,7 @@ func load_data():
 	var save_file = File.new()
 	if not save_file.file_exists("user://ld47.save"):
 		return 
-	save_file.open("user://ld47_high_score.save",File.READ)
+	save_file.open("user://ld47.save",File.READ)
 	var data = parse_json(save_file.get_line())
 	var new_high_score = data["high_score"]
 	if new_high_score != null and new_high_score > 0:

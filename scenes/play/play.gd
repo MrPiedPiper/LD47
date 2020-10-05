@@ -29,6 +29,9 @@ func _on_Enemy_move_to_back(enemy:Node2D):
 	enemy.get_parent().remove_child(enemy)
 	back_enemies.add_child(enemy)
 
+func _input(event):
+	if is_started and Input.is_action_just_pressed("escape"):
+		game_over()
 
 func _on_Enemy_move_to_front(enemy):
 	enemy.get_parent().remove_child(enemy)

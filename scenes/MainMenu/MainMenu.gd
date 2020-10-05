@@ -11,3 +11,8 @@ func _on_LetsRollButton_button_up():
 func update_score():
 	last_score_display.set_numbers(Utility.score)
 	high_score_display.set_numbers(Utility.high_score)
+
+
+func _on_FullScreenButton_button_up():
+	#Thanks to Calinou from https://godotengine.org/qa/28425/how-to-toggle-fullscreen-from-code
+	OS.window_fullscreen = !OS.window_fullscreen
