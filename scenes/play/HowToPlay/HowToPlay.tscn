@@ -184,15 +184,15 @@ Make high scores and last as long as you can!"
 align = 1
 
 [node name="Label3" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
-margin_left = 151.0
+margin_left = 90.0
 margin_top = 269.0
-margin_right = 776.0
+margin_right = 837.0
 margin_bottom = 307.0
 mouse_filter = 1
 size_flags_horizontal = 4
 size_flags_vertical = 10
 custom_fonts/font = SubResource( 3 )
-text = "Press the ESC/START/BACK  when playing to go the main menu"
+text = "Press  ESC (computer)  /  BACK (Android)  when playing to go the main menu"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
