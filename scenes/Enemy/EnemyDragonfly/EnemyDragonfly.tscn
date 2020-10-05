@@ -39,8 +39,8 @@ has_damaged_sprite = true
 difficulty = 2
 
 [node name="Mobile" parent="." index="0"]
-position = Vector2( -45.5451, 44.6781 )
-rotation = -0.0687056
+position = Vector2( 5.96059, 4.62643 )
+rotation = 3.8536
 
 [node name="Sprite" parent="Mobile" index="2"]
 scale = Vector2( 8, 8 )

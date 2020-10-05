@@ -24,7 +24,7 @@ var hard_enemies = []
 var difficulty = 1
 var wave = []
 
-var min_cooldown = 0.6
+var min_cooldown = 0.25
 var max_cooldown = 1.5
 var cooldown_step = 0.2
 
@@ -110,6 +110,8 @@ func _on_spawn_cooldown_timeout():
 	new_spawn.position = new_spawn.path.curve.get_point_position(0)
 	get_node(node_behind).add_child(new_spawn)
 	emit_signal("enemy_spawned")
+	
+	difficulty += 1
 	
 	$spawn_cooldown.wait_time = max(min_cooldown,max_cooldown - (cooldown_step * (difficulty/5)))
 	$spawn_cooldown.start()

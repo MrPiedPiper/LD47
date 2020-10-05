@@ -39,9 +39,6 @@ func _on_PlayerChicken_scored(score):
 	if score < 0:
 		$AnimationPlayer.play("Hurt")
 	
-	if Utility.score > Utility.high_score:
-		Utility.high_score = Utility.score
-	
 	play_ui.set_score(Utility.score)
 	play_ui.update_score()
 
@@ -54,6 +51,7 @@ func _on_Menu_play_game_pressed():
 		new_how_to.connect("done",self,"_on_Menu_play_game_pressed")
 		$UI.add_child(new_how_to)
 		return
+	play_ui.update_score()
 	$ScreenTransition.play("MainToPlay")
 
 func _on_EnemySpawner_enemy_spawned():
@@ -77,6 +75,9 @@ func new_game():
 	play_ui.show()
 
 func game_over():
+	if Utility.score > Utility.high_score:
+		Utility.high_score = Utility.score
+		
 	is_started = false
 	for i in back_enemies.get_children()+front_enemies.get_children():
 		$ParticleBurst.burst(i.global_position)
