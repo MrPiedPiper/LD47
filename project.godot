@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Peck-It!"
+config/name="LD47"
 run/main_scene="res://scenes/play/play.tscn"
 config/icon="res://Art/Chicken/chicken_icon.png"
 
