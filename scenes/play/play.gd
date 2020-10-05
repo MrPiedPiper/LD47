@@ -12,6 +12,9 @@ var elapsed = 0
 var lose_threshold:float = 30.0
 
 func _ready():
+	Utility.load_high_score()
+	$UI/Menu.update_score()
+	
 	Utility.score = 0
 
 func _process(delta):
@@ -71,6 +74,7 @@ func update_bar():
 		$UI/Menu.update_score()
 		$UI/PlayUI.hide()
 		$UI/Menu.show()
+		Utility.save_high_score()
 
 func _on_PlayerChicken_attack_completed():
 	update_bar()
