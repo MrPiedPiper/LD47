@@ -89,6 +89,7 @@ func game_over():
 	$UI/PlayUI.hide()
 	$UI/Menu.show()
 	Utility.save_data()
+	$ScreenTransition.play("PlayToMain")
 
 func _on_PlayerChicken_attack_completed():
 	update_bar()
