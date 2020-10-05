@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MainMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player/PlayerStretch/PlayerChicken/PlayerChicken.tscn" type="PackedScene" id=2]
@@ -24,6 +24,197 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "DEFAULT"
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI/PlayUI:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UI/PlayUI:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UI/Menu:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UI/Menu:rect_rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("UI/PlayUI:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UI/Menu:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "MainToPlay"
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI/Menu:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -59.9324 ), Vector2( 0, 758.143 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UI/PlayUI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UI/PlayUI:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1.5, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -632.286 ), Vector2( 0, -692.218 ), Vector2( 0, 83.9052 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UI/Menu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "new_game"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "PlayToMain"
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI/Menu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UI/PlayUI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UI/PlayUI:rect_position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8, 1 ),
+"transitions": PoolRealArray( 0.999999, 1.5, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 93.4388 ), Vector2( 0, -838.279 ), Vector2( 0, -651.402 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UI/Menu:rect_position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1.5, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 758.143 ), Vector2( 0, 886.288 ), Vector2( 0, -80.1361 ), Vector2( 0, 0 ) ]
 }
 
 [node name="Play" type="Node2D"]
@@ -68,8 +259,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Menu" parent="UI" instance=ExtResource( 1 )]
-margin_left = -1.18921
-margin_right = -1.18921
+margin_bottom = -0.00256348
 
 [node name="ParticleBurst" parent="." instance=ExtResource( 8 )]
 
@@ -80,8 +270,12 @@ anims/Hurt = SubResource( 1 )
 stream = ExtResource( 9 )
 
 [node name="ScreenTransition" type="AnimationPlayer" parent="."]
+anims/DEFAULT = SubResource( 2 )
+anims/MainToPlay = SubResource( 3 )
+anims/PlayToMain = SubResource( 4 )
 [connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_EnemySpawner_enemy_spawned"]
 [connection signal="wave_complete" from="EnemySpawner" to="." method="_on_EnemySpawner_wave_complete"]
 [connection signal="attack_completed" from="PlayerChicken" to="." method="_on_PlayerChicken_attack_completed"]
 [connection signal="scored" from="PlayerChicken" to="." method="_on_PlayerChicken_scored"]
 [connection signal="play_game_pressed" from="UI/Menu" to="." method="_on_Menu_play_game_pressed"]
+[connection signal="animation_finished" from="ScreenTransition" to="." method="_on_ScreenTransition_animation_finished"]

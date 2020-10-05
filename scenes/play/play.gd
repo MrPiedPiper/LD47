@@ -51,10 +51,10 @@ func _on_EnemySpawner_wave_complete():
 func _on_Menu_play_game_pressed():
 	if Utility.is_first_time:
 		var new_how_to = how_to_play.instance()
-		new_how_to.connect("done",self,"new_game")
+		new_how_to.connect("done",self,"_on_Menu_play_game_pressed")
 		$UI.add_child(new_how_to)
 		return
-	new_game()
+	$ScreenTransition.play("MainToPlay")
 
 func _on_EnemySpawner_enemy_spawned():
 	update_bar()
