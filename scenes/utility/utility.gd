@@ -28,3 +28,9 @@ func delete_data():
 	if save_file.file_exists("user://ld47.save"):
 		var dir = Directory.new()
 		dir.remove("user://ld47_high_score.save")
+
+func play_sound(sound:AudioStream):
+	var new_sound = load("res://scenes/utility/SoundPlayer/SoundPlayer.tscn").instance()
+	$Sounds.add_child(new_sound)
+	new_sound.play_sound(sound)
+

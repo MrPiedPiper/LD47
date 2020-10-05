@@ -14,6 +14,8 @@ var type = TYPE.DEFAULT
 export var default_attack:int = 1
 var attack = 1
 
+export(Array,AudioStream) var attack_audio
+
 var saved_animation_seek = 0
 
 func _input(event):

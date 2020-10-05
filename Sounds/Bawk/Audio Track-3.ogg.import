@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Audio Track-3.ogg-30187b0a0c7596b97370f3b7c8bd64d2.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Bawk/Audio Track-3.ogg"
+dest_files=[ "res://.import/Audio Track-3.ogg-30187b0a0c7596b97370f3b7c8bd64d2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

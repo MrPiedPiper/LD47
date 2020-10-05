@@ -14,6 +14,8 @@ func _process(delta):
 	stretch_to(end.global_position,false)
 
 func clicked(pos):
+	$AttackAudioPlayer.stream = attack_audio[randi()%attack_audio.size()]
+	$AttackAudioPlayer.play(0)
 	stretch_to(pos,true)
 	if $AnimationPlayer.current_animation == "Idle":
 		saved_animation_seek = $AnimationPlayer.current_animation_position
